@@ -220,7 +220,8 @@ class BtcPriceService : Service() {
         val request = Request.Builder().url(url).build()
         client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) throw Exception("Error")
-            val price = JSONObject(response.body?.string()).getDouble("USD")
+            val bodyString = response.body?.string() ?: throw Exception("Empty")
+            val price = JSONObject(bodyString).getDouble("USD")
             return "$${String.format(Locale.US, "%,.0f", price)}"
         }
     }
@@ -230,7 +231,8 @@ class BtcPriceService : Service() {
         val request = Request.Builder().url(url).build()
         client.newCall(request).execute().use { response ->
             if (!response.isSuccessful) throw Exception("Error")
-            val price = JSONObject(response.body?.string()).getJSONObject("bitcoin").getDouble("usd")
+            val bodyString = response.body?.string() ?: throw Exception("Empty")
+            val price = JSONObject(bodyString).getJSONObject("bitcoin").getDouble("usd")
             return "$${String.format(Locale.US, "%,.0f", price)}"
         }
     }
