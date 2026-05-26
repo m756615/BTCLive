@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Fluorescent Lime Green (#32FF00) Concentric Circles -->
+
+    <!-- Outer Circle -->
+    <path
+        android:strokeColor="#32FF00"
+        android:strokeWidth="2.5"
+        android:pathData="M54,54m-35,0a35,35 0,1 1,70 0a35,35 0,1 1,-70 0" />
+
+    <!-- Middle Circle -->
+    <path
+        android:strokeColor="#32FF00"
+        android:strokeWidth="2.5"
+        android:pathData="M54,54m-22,0a22,22 0,1 1,44 0a22,22 0,1 1,-44 0" />
+
+    <!-- Inner Circle -->
+    <path
+        android:strokeColor="#32FF00"
+        android:strokeWidth="2.5"
+        android:pathData="M54,54m-9,0a9,9 0,1 1,18 0a9,9 0,1 1,-18 0" />
+
+</vector>
