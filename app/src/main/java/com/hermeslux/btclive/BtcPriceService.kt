@@ -63,15 +63,17 @@ class BtcPriceService : Service() {
             prefs.edit().putBoolean("is_dynamic", isDynamic).apply()
         }
 
+        // Android 15 (Target SDK 35+) requirement: 
+        // The overlay window must be visible BEFORE starting the foreground service.
+        if (Settings.canDrawOverlays(this)) {
+            showOrUpdateOverlay()
+        }
+
         val notification = createPriceNotification("Starting service...")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(NOTIFICATION_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
         } else {
             startForeground(NOTIFICATION_ID, notification)
-        }
-
-        if (Settings.canDrawOverlays(this)) {
-            showOrUpdateOverlay()
         }
 
         startPriceUpdates()

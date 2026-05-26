@@ -579,12 +579,26 @@ fun PermissionSection(hasNotif: Boolean, hasOverlay: Boolean, onGrantNotificatio
     Column {
         Text("Setup Required", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.error)
         Spacer(Modifier.height(16.dp))
+        Text(
+            "The app needs special permissions to function properly. If 'Display over other apps' is 'Disallowed', please click below to enable it.",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(Modifier.height(24.dp))
         if (!hasNotif && Build.VERSION.SDK_INT >= 33) {
             Button(onClick = onGrantNotification, modifier = Modifier.fillMaxWidth()) { Text("Grant Notification Permission") }
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(12.dp))
         }
         if (!hasOverlay) {
-            Button(onClick = onGrantOverlay, modifier = Modifier.fillMaxWidth()) { Text("Grant Overlay Permission") }
+            Button(onClick = onGrantOverlay, modifier = Modifier.fillMaxWidth()) { 
+                Text("Enable 'Display Over Other Apps'") 
+            }
+            Spacer(Modifier.height(8.dp))
+            Text(
+                "Note: On some devices, you may need to find 'BTCLive' in the list and toggle the switch to 'Allowed'.",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.outline
+            )
         }
     }
 }
